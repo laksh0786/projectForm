@@ -1,23 +1,24 @@
-import logo from './logo.svg';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import Navbar from './components/Navbar';
+import CLRIALLFORMS from './pages/CLRIALLFORMS';
+import CLRIForm from './pages/CLRIForm';
+import CLRIShowData from './pages/CLRIShowData';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <Navbar/>
+        {/* <CLRIForm/> */}
+        {/* <CLRIShowData/> */}
+        {/* <CLRIALLFORMS/> */}
+
+        <Routes>
+          <Route path="/" element={<CLRIForm/>} ></Route>    
+          <Route path="/show-all" element={<CLRIALLFORMS/>}></Route>    
+          <Route path="/details/:id" element={<CLRIShowData/>}></Route>    
+        </Routes>
+
     </div>
   );
 }
