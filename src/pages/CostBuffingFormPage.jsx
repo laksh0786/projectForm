@@ -54,7 +54,7 @@ const FormPage = () => {
                                         name="unit"
                                         id="unit"
                                         onChange={changeHandler}
-                                        value={buffingData.unitNo}
+                                        value={buffingData.unit}
                                     />
                                 </div>
 
