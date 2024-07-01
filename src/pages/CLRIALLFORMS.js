@@ -49,7 +49,7 @@ const CLRIALLFORMS = () => {
                     </thead>
                     <tbody>
                         {formDataList.map(formData => (
-                            <FormDataDisplay key={formData._id} formData={formData} />
+                            <FormDataDisplay key={formData.id} formData={formData} />
                         ))}
                     </tbody>
                 </table>

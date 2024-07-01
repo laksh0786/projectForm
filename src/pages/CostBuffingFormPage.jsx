@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { addcbfController } from '../services/cbfController';
 
 const FormPage = () => {
 
@@ -24,9 +25,35 @@ const FormPage = () => {
     }
 
 
-    const clickHandler = (e)=>{
+    const clickHandler = async (e)=>{
         e.preventDefault();
-        console.log(buffingData);
+
+        try{
+
+            const response = await addcbfController(buffingData);
+
+            if(response.status === 200){
+                alert('Data Added Successfully');
+                setBuffingData({
+                    unit: '',
+                    machineName: '',
+                    machineNo: '',
+                    buffingDate: '',
+                    cotsDescription: '',
+                    cotsDia: '',
+                    cotsMake: '',
+                    doneBy: '',
+                    verifiedBy: '',
+                    remarks: ''
+                })  
+            }
+
+        } catch(err){
+            console.log(err.message);
+            alert('Failed to add data');
+        }
+
+
     }
 
 

@@ -43,7 +43,10 @@ const CLRIShowData = () => {
             // console.log(response.data); // Verify response in console
 
             if (response.status === 200) {
-                setFormData(response.data.data); // Assuming your response has correct structure
+
+                const [result] = response.data.data;
+                // console.log(result); 
+                setFormData(result); 
             } else {
                 console.log('Failed to fetch data');
             }
