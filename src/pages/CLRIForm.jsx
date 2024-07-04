@@ -1,17 +1,23 @@
 import React, { useState } from 'react';
-import clriData from '../data/clriData';
+import { clriFormData, dataSet1, dataSet2, dataSet3 } from '../data/clriData';
 import { addController } from '../services/clriFormController';
 import { useNavigate } from 'react-router-dom';
 
 const CLRIForm = () => {
-
     const navigate = useNavigate();
 
+    // List of machine names and their corresponding datasets
+    const machineDataSets = {
+        Machine1: dataSet1,
+        Machine2: dataSet2,
+        Machine3: dataSet3
+    };
+
+    const [selectedMachine, setSelectedMachine] = useState('');
+    const [clriData, setClriData] = useState([]);
+
     // Initialize formData with sequential arrays for each label and their remarks
-    const initialFormData = clriData.reduce((acc, data) => {
-        acc[data.label] = Array(data.question.length).fill({ value: "", remark: "" });
-        return acc;
-    }, {
+    const initialFormData = {
         plant: '',
         department: '',
         section: '',
@@ -22,7 +28,7 @@ const CLRIForm = () => {
         pmDate: '',
         pmStartTime: '',
         pmFinishTime: ''
-    });
+    };
 
     const [formData, setFormData] = useState(initialFormData);
 
@@ -32,6 +38,28 @@ const CLRIForm = () => {
             ...prevState,
             [name]: value
         }));
+
+        // Handle machine name selection
+        if (name === 'machineName') {
+            setFormData(prevState=>{
+                return {
+                    ...prevState,
+                    machineName: value
+                }
+            })
+            const selectedData = machineDataSets[value] || [];
+            setClriData(selectedData);
+
+            // Reset formData for the questions
+            const updatedFormData = selectedData.reduce((acc, data) => {
+                acc[data.label] = Array(data.question.length).fill({ value: "", remark: "" });
+                return acc;
+            }, {});
+            setFormData(prevState => ({
+                ...prevState,
+                ...updatedFormData
+            }));
+        }
     };
 
     const handleSelectChange = (e, label, index, type) => {
@@ -75,14 +103,29 @@ const CLRIForm = () => {
                             <label htmlFor={field} className="block text-gray-900 font-medium">
                                 {field.charAt(0).toUpperCase() + field.slice(1).replace(/([A-Z])/g, ' $1')}
                             </label>
-                            <input
-                                type={field.includes('Time') ? 'time' : field.includes('Date') ? 'date' : 'text'}
-                                id={field}
-                                name={field}
-                                value={formData[field]}
-                                onChange={handleChange}
-                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2"
-                            />
+                            {field === 'machineName' ? (
+                                <select
+                                    id={field}
+                                    name={field}
+                                    value={formData[field]}
+                                    onChange={handleChange}
+                                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2"
+                                >
+                                    <option value="">Select Machine</option>
+                                    {Object.keys(machineDataSets).map((machine, index) => (
+                                        <option key={index} value={machine}>{machine}</option>
+                                    ))}
+                                </select>
+                            ) : (
+                                <input
+                                    type={field.includes('Time') ? 'time' : field.includes('Date') ? 'date' : 'text'}
+                                    id={field}
+                                    name={field}
+                                    value={formData[field]}
+                                    onChange={handleChange}
+                                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2"
+                                />
+                            )}
                         </div>
                     ))}
                 </div>

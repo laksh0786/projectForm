@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import clriData from '../data/clriData';
+import {clriFormData} from '../data/clriData';
 import { getParticularDataController } from '../services/clriFormController';
 import { useParams } from 'react-router-dom';
 
 const CLRIShowData = () => {
+
+    const clriData = clriFormData;
 
     const {id} = useParams();
     // console.log(useParams());

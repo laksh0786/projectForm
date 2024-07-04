@@ -1,4 +1,4 @@
-const clriFormData = [{
+export const clriFormData = [{
     label: "Cleaning",
     question: [
         "Bottom roll cleaning",
@@ -48,4 +48,93 @@ const clriFormData = [{
 
 ]
 
-export default clriFormData;
+export const dataSet1 = [
+    {
+        label:"label1",
+        question:[
+            "question1",
+            "question2",
+            "question3",
+            "question4",
+            "question5",
+            "question6",
+            "question7"
+        ]
+    } , 
+    {
+        label:"label2",
+        question:[
+            "question1",
+            "question2",
+            "question3"
+        ]
+    } , 
+    {
+        label:"label3",
+        question:[
+            "question1",
+            "question2",
+            "question3"
+        ]
+    }
+]
+
+
+export const dataSet2 = [
+    {
+        label:"label1",
+        question:[
+            "question1",
+            "question2",
+            "question3"
+        ]
+    } , 
+    {
+        label:"label2",
+        question:[
+            "question1",
+            "question2",
+            "question3",
+            "question4",
+            "question5",
+            "question6"
+        ]
+    } , 
+    {
+        label:"label3",
+        question:[
+            "question1",
+            "question2",
+            "question3"
+        ]
+    }
+]
+
+
+export const dataSet3 = [
+    {
+        label:"label1",
+        question:[
+            "question1",
+            "question2",
+            "question3"
+        ]
+    } , 
+    {
+        label:"label2",
+        question:[
+            "question1",
+            "question2",
+            "question3"
+        ]
+    } , 
+    {
+        label:"label3",
+        question:[
+            "question1",
+            "question2",
+            "question3"
+        ]
+    }
+]
+
