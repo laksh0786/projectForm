@@ -8,17 +8,19 @@ import FormPage from './pages/CostBuffingFormPage';
 import HomePage from './pages/HomePage';
 import EmergencyLightForm from './pages/Electrical/EmergencyLight';
 import EmergencyDoorForm from './pages/Electrical/EmergencyDoorForm';
+import RingTraveller from './pages/Production/RingTraveller';
 
 function App() {
   return (
     <div className="App">
         <Navbar/>
+        <RingTraveller/>
         {/* <CLRIForm/> */}
         {/* <CLRIShowData/> */}
         {/* <CLRIALLFORMS/> */}
         {/* <FormPage/> */}
 
-        <Routes>
+        {/* <Routes>
           <Route path="/" element={<HomePage/>} ></Route>    
           <Route path="/clri-form" element={<CLRIForm/>} ></Route>    
           <Route path="/show-all" element={<CLRIALLFORMS/>}></Route>    
@@ -27,7 +29,7 @@ function App() {
           <Route path="/clri-form" element={<CLRIForm/>} ></Route>   
           <Route path="/emergency-light-form" element={<EmergencyLightForm/>}></Route>  
           <Route path="/emergency-door-form" element={<EmergencyDoorForm/>}></Route>     
-        </Routes>
+        </Routes> */}
 
     </div>
   );
