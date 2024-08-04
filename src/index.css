@@ -15,3 +15,65 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.App {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 20px;
+}
+
+.machines, .parts {
+  margin: 20px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+button {
+  margin-left: 20px;
+}
+
+
+
+
+
+
+.custom-radio {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.custom-radio input[type="radio"] {
+  display: none;
+}
+
+.radio-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background-color: #f0f0f0; */
+  border: 2px solid #ccc;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.radio-icon.bg-green-500 {
+  border-color: #4caf50;
+  color: #4caf50;
+}
+
+.radio-icon.bg-red-500 {
+  border-color: #f44336;
+  color:#f44336;
+}
